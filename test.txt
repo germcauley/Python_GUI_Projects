@@ -1,0 +1,39 @@
+# Use selenium to get the page and grab all the links and images from the page:
+#Gerald McAuley 2017
+
+import requests, os, sys
+from selenium import webdriver
+
+driver = webdriver.Firefox()
+
+#Create a file and write results to it
+Resultsfile = open("NewTestResultsFile.txt", "w")
+
+#Get URLS from txt file
+
+filename = "livevanitys.txt"
+#filename = "/Users/gmcauley/Desktop/file.txt"
+file = open(filename, "r")
+for line in file:
+    try:
+        driver.get(line)
+        #url = driver.current_url
+        print("Requesting: " + line)
+        status = requests.options(line).status_code
+        print("Status: "+ str(status))
+        print("Actual URL: "+ driver.current_url)
+        url = driver.current_url
+        current_status = status = requests.options(url).status_code
+        print("Current status: " + str(current_status))
+        print(" --------------------------")
+        # if "https://www.bankofireland.com/" in url:
+        code = requests.options(line).status_code
+        Resultsfile.write(line + str(status) + '/n')
+
+    except:
+        print("Encountered an error with: " + driver.current_url )
+
+print('Script has finished running,all links have been scanned!')
+input("Press Enter to continue...")
+driver.quit()#end driver
+Resultsfile.close()#close file with all results

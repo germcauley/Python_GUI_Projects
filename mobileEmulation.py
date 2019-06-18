@@ -1,6 +1,13 @@
+from selenium import webdriver
+
+from selenium.webdriver.chrome.options import Options
+
 # Simple enough, just import everything from tkinter.
+from tkinter import *
 from tkinter.filedialog import *
-from File_Functions import FileFunctions
+import requests, os, sys
+from selenium import webdriver
+import time
 
 
 # Here, we are creating our class, Window, and inheriting from the Frame
@@ -33,16 +40,13 @@ class Window(Frame):
         # create the file object)
         file = Menu(menu)
 
-        #Instantiates a class with all file commands, open, exit etc
-        fileActions = FileFunctions()
-
         # adds a command to the menu option, calling it exit, and the
 
         # command it runs on event is client_exit
-        file.add_command(label="Exit", command=fileActions.client_exit)
+        file.add_command(label="Exit", command=self.client_exit)
 
         # command it runs on event is client_exit
-        file.add_command(label="LoadFile", command=FileFunctions.OpenFile)
+        file.add_command(label="LoadFile", command=self.OpenFile)
 
         # added "file" to our menu
         menu.add_cascade(label="File", menu=file)
@@ -58,29 +62,76 @@ class Window(Frame):
         menu.add_cascade(label="Edit", menu=edit)
 
         # creating a button instance
-        quitButton = Button(self, text="Exit", command=fileActions.client_exit)
+        quitButton = Button(self, text="Exit", command=self.client_exit)
 
         # placing the button on my window
         quitButton.place(x=125, y=125)
 
         # creating a button instance
-
-        loadButton = Button(self, text="Load File", command=fileActions.OpenFile)
+        loadButton = Button(self, text="Load File", command=self.OpenFile)
 
         # placing the button on my window
         loadButton.place(x=250, y=125)
 
         # creating a button instance
-        scanButton = Button(self, text="Start Scan", command=fileActions.Scan_Urls)
+        scanButton = Button(self, text="Start Scan", command=self.Scan_Urls)
 
         # placing the button on my window
         scanButton.place(x=375, y=125)
 
-        #create Text Widget
-        T = Text(root, height=2, width=30)
-        T.pack()
-        T.insert('1.0', 'here is my text to insert')
+    def client_exit(self):
+        exit()
 
+    def OpenFile(self):
+
+        # with open("in.txt") as f:
+        #     with open("out.txt", "w") as f1:
+        #         for line in f:
+        #             if "ROW" in line:
+        #                 f1.write(line)
+
+
+
+        name = askopenfilename(initialdir="",
+                               filetypes=(("Text File", "*.txt"), ("All Files", "*.*")),
+                               title="Choose a file."
+                               )
+        # print(name)
+
+        # Using try in case user types in unknown file or closes without choosing a file.
+        try:
+            with open(name, 'r') as f:
+                with open("out.txt", "w") as f1:
+                    for line in f:
+                         f1.write(line)
+                f1.close()
+        except:
+            print("No file exists")
+
+
+    def Scan_Urls(self):
+
+        mobile_emulation = {
+
+            "deviceMetrics": {"width": 360, "height": 640, "pixelRatio": 3.0},
+
+            "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Galaxy S5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"}
+
+        chrome_options = Options()
+
+        chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+
+        driver = webdriver.Chrome(chrome_options=chrome_options)
+
+        filename = "FWarticles.txt"
+        # filename = "/Users/gmcauley/Desktop/file.txt"
+        file = open(filename, "r")
+
+        for line in file:
+            driver.get(line)
+            time.sleep(3)
+
+        driver.quit()
 
 
 # root window created. Here, that would be the only window, but
