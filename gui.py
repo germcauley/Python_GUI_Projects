@@ -71,16 +71,28 @@ class Window(Frame):
         loadButton.place(x=250, y=125)
 
         # creating a button instance
-        scanButton = Button(self, text="Start Scan", command=fileActions.Scan_Urls)
+        scanButton = Button(self, text="Start Scan", command=self.Scan_Urls)
 
         # placing the button on my window
         scanButton.place(x=375, y=125)
+
+
+        #place a listbox
+        Lb1 = Listbox(self)
+        Lb1.insert(1, "DEV")
+        Lb1.insert(2, "STG")
+        Lb1.insert(3, "PROD")
+        Lb1.place(x=350, y=225)
 
         #create Text Widget
         T = Text(root, height=2, width=30)
         T.pack()
         T.insert('1.0', 'here is my text to insert')
 
+
+    def Scan_Urls(self,x="www.google.com"):
+
+        print(str(x))
 
 
 # root window created. Here, that would be the only window, but
