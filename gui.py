@@ -1,11 +1,15 @@
 # Simple enough, just import everything from tkinter.
+from functools import partial
 from tkinter.filedialog import *
+from tkinter import ttk;
 from File_Functions import FileFunctions
 
 
 # Here, we are creating our class, Window, and inheriting from the Frame
 # class. Frame is a class from the tkinter module. (see Lib/tkinter/__init__)
 class Window(Frame):
+
+
 
     # Define settings upon initialization. Here you can specify
     def __init__(self, master=None):
@@ -70,29 +74,38 @@ class Window(Frame):
         # placing the button on my window
         loadButton.place(x=250, y=125)
 
-        # creating a button instance
-        scanButton = Button(self, text="Start Scan", command=self.Scan_Urls)
 
-        # placing the button on my window
+        #Place env Label
+        envLabel = Label(self,text="Select an Environment.")
+        envLabel .place(x=10, y=10)
+        #place a comboboxbox for environments
+        combo = ttk.Combobox(self,values=[ "DEV","STG","PROD"])
+        combo.place(x=10,y=50)
+        cbox = combo
+
+        # Place domain Label
+        domainLabel = Label(self, text="Select a Domain.")
+        domainLabel.place(x=250, y=10)
+        # place a comboboxbox for domain
+        combo2 = ttk.Combobox(self, values=["WWW", "PPG"])
+        combo2.place(x=250, y=50)
+        cbox2 = combo2
+
+
+        # creating a scan button instance, pass env list and domain list in
+        scanButton = Button(self, text="Start Scan", command=lambda: self.Scan_Urls(cbox,cbox2))
+
+        # placing the scan button on my window
         scanButton.place(x=375, y=125)
-
-
-        #place a listbox
-        Lb1 = Listbox(self)
-        Lb1.insert(1, "DEV")
-        Lb1.insert(2, "STG")
-        Lb1.insert(3, "PROD")
-        Lb1.place(x=350, y=225)
 
         #create Text Widget
         T = Text(root, height=2, width=30)
         T.pack()
         T.insert('1.0', 'here is my text to insert')
 
-
-    def Scan_Urls(self,x="www.google.com"):
-
-        print(str(x))
+    def Scan_Urls(self,env,domain):
+       print(env.get())
+       print(domain.get())
 
 
 # root window created. Here, that would be the only window, but
