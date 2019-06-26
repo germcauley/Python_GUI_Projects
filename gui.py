@@ -74,7 +74,6 @@ class Window(Frame):
         # placing the button on my window
         loadButton.place(x=250, y=125)
 
-
         #Place env Label
         envLabel = Label(self,text="Select an Environment.")
         envLabel .place(x=10, y=10)
@@ -91,22 +90,16 @@ class Window(Frame):
         combo2.place(x=250, y=50)
         cbox2 = combo2
 
-
         # creating a scan button instance, pass env list and domain list in
-        scanButton = Button(self, text="Start Scan", command=lambda: self.Scan_Urls(cbox,cbox2))
+        testButton = Button(self, text="Test Scan", command=lambda: fileActions.Scanner(cbox.get(),cbox2.get()))
 
         # placing the scan button on my window
-        scanButton.place(x=375, y=125)
+        testButton.place(x=375, y=125)
 
         #create Text Widget
         T = Text(root, height=2, width=30)
         T.pack()
         T.insert('1.0', 'here is my text to insert')
-
-    def Scan_Urls(self,env,domain):
-       print(env.get())
-       print(domain.get())
-
 
 # root window created. Here, that would be the only window, but
 # you can later have windows within windows.
