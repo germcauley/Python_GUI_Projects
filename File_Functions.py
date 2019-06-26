@@ -1,5 +1,4 @@
 from tkinter.filedialog import *
-from gui import Window
 import requests, os, sys
 from selenium import webdriver
 
@@ -32,38 +31,46 @@ class FileFunctions(object):
     def client_exit(self):
         exit()
 
-    def Scan_Urls(self):
+    # def Scan_Urls(self):
+    #
+    #     filename = "out.txt"
+    #     # filename = "/Users/gmcauley/Desktop/file.txt"
+    #     file = open(filename, "r")
+    #
+    #     # initialize the driver
+    #     driver = webdriver.Chrome()
+    #     # Create a file and write results to it
+    #     #Resultsfile = open("NewTestResultsFile.txt", "w")
+    #     # Get URLS from  x global var
+    #     for line in file:
+    #         print("Requesting: " + line)
+    #         try:
+    #             driver.get(line)
+    #             # url = driver.current_url
+    #             print("Requesting: " + line)
+    #             status = requests.options(line).status_code
+    #             print("Status: " + str(status))
+    #             print("Actual URL: " + driver.current_url)
+    #             url = driver.current_url
+    #             current_status = status = requests.options(url).status_code
+    #             print("Current status: " + str(current_status))
+    #             print(" --------------------------")
+    #             # if "https://www.bankofireland.com/" in url:
+    #             code = requests.options(line).status_code
+    #             #Resultsfile.write(line + str(status) + '/n')
+    #
+    #         except:
+    #             print("Encountered an error with: " + driver.current_url)
+    #
+    #     print('Script has finished running,all links have been scanned!')
+    #     input("Press Enter to continue...")
+    #     driver.quit()  # end driver
+    #     #Resultsfile.close()  # close file with all results
+    # def Scan_Urls(self,item):
+    #
+    #     print(str(item))
 
-        filename = "out.txt"
-        # filename = "/Users/gmcauley/Desktop/file.txt"
-        file = open(filename, "r")
 
-        # initialize the driver
-        driver = webdriver.Chrome()
-        # Create a file and write results to it
-        #Resultsfile = open("NewTestResultsFile.txt", "w")
-        # Get URLS from  x global var
-        for line in file:
-            print("Requesting: " + line)
-            try:
-                driver.get(line)
-                # url = driver.current_url
-                print("Requesting: " + line)
-                status = requests.options(line).status_code
-                print("Status: " + str(status))
-                print("Actual URL: " + driver.current_url)
-                url = driver.current_url
-                current_status = status = requests.options(url).status_code
-                print("Current status: " + str(current_status))
-                print(" --------------------------")
-                # if "https://www.bankofireland.com/" in url:
-                code = requests.options(line).status_code
-                #Resultsfile.write(line + str(status) + '/n')
 
-            except:
-                print("Encountered an error with: " + driver.current_url)
 
-        print('Script has finished running,all links have been scanned!')
-        input("Press Enter to continue...")
-        driver.quit()  # end driver
-        #Resultsfile.close()  # close file with all results
+
