@@ -10,7 +10,6 @@ from File_Functions import FileFunctions
 class Window(Frame):
 
 
-
     # Define settings upon initialization. Here you can specify
     def __init__(self, master=None):
         # parameters that you want to send through the Frame class.
@@ -96,10 +95,12 @@ class Window(Frame):
         # placing the scan button on my window
         testButton.place(x=375, y=125)
 
-        #create Text Widget
+        # #create Text Widget
         T = Text(root, height=2, width=30)
         T.pack()
         T.insert('1.0', 'here is my text to insert')
+
+
 
 # root window created. Here, that would be the only window, but
 # you can later have windows within windows.
@@ -112,3 +113,4 @@ app = Window(root)
 
 # mainloop
 root.mainloop()
+
