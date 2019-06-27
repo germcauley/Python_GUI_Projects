@@ -1,0 +1,7 @@
+-update gui with scan results
+
+-proceed to next url on enterkey
+
+-add console error scan options
+
+-add manual tests for every domain
