@@ -1,10 +1,11 @@
 from tkinter.filedialog import *
 import requests, os, sys
 from selenium import webdriver
-import gui
+
+import datetime
 
 
-class FileFunctions(object):
+class FileFunctions(Frame):
 
     def OpenFile(self):
         name = askopenfilename(initialdir="",
@@ -57,6 +58,3 @@ class FileFunctions(object):
         driver.quit()  # end driver
         exit()
         #Resultsfile.close()  # close file with all results
-
-    def Scan_Urls(self,item):
-        print(str(item))
