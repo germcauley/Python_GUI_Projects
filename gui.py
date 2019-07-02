@@ -1,7 +1,7 @@
 # Simple enough, just import everything from tkinter.
-from functools import partial
 from tkinter.filedialog import *
-from tkinter import ttk;
+from tkinter import ttk
+import datetime
 from File_Functions import FileFunctions
 
 
@@ -9,20 +9,21 @@ from File_Functions import FileFunctions
 # class. Frame is a class from the tkinter module. (see Lib/tkinter/__init__)
 class Window(Frame):
 
-
     # Define settings upon initialization. Here you can specify
-    def __init__(self, master=None):
+    def __init__(self, master):
         # parameters that you want to send through the Frame class.
         Frame.__init__(self, master)
 
         # reference to the master widget, which is the tk window
         self.master = master
 
+
         # with that, we want to then run init_window, which doesn't yet exist
         self.init_window()
 
     # Creation of init_window
     def init_window(self):
+
         # changing the title of our master widget
         self.master.title("Test Vanity Urls")
 
@@ -36,7 +37,7 @@ class Window(Frame):
         # create the file object)
         file = Menu(menu)
 
-        #Instantiates a class with all file commands, open, exit etc
+        # Instantiates a class with all file commands, open, exit etc
         fileActions = FileFunctions()
 
         # adds a command to the menu option, calling it exit, and the
@@ -100,6 +101,18 @@ class Window(Frame):
         T.pack()
         T.insert('1.0', 'here is my text to insert')
 
+        lab = Label(root)
+        lab.pack()
+        # run first time
+
+
+        def clock():
+            time = datetime.datetime.now().strftime("Time: %H:%M:%S")
+            lab.config(text=time)
+            # lab['text'] = time
+        root.after(1000, clock)  # run itself again after 1000 ms
+
+        clock()
 
 
 # root window created. Here, that would be the only window, but
@@ -113,4 +126,3 @@ app = Window(root)
 
 # mainloop
 root.mainloop()
-
