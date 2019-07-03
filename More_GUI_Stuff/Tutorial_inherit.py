@@ -1,15 +1,12 @@
 from tkinter.filedialog import *
 import requests, os, sys
 from selenium import webdriver
+from Tutorial import App
+
 import datetime
-from gui import *
 
 
-class FileFunctions(MainWindow):
-
-    def __init__(self):
-        pass
-
+class FileFunctions(App):
 
     def OpenFile(self):
         name = askopenfilename(initialdir="",
@@ -27,11 +24,10 @@ class FileFunctions(MainWindow):
             print("No file exists")
 
     def client_exit(self):
-        exit()
+        quit()
 
     def Scanner(self,env,dom):
-
-        filename = "/Users/gmcauley/PycharmProjects/GUI_TEST_LIST_URLS/Urls/"+(env+dom) + ".txt"
+        filename = (env+dom) + ".txt"
         # filename = "/Users/gmcauley/Desktop/file.txt"
         file = open(filename, "r")
         # initialize the driver
@@ -43,7 +39,6 @@ class FileFunctions(MainWindow):
             print("Requesting: " + line)
             try:
                 driver.get(line)
-
                 # url = driver.current_url
                 status = requests.options(line).status_code
 
@@ -64,6 +59,3 @@ class FileFunctions(MainWindow):
         driver.quit()  # end driver
         exit()
         #Resultsfile.close()  # close file with all results
-
-    def update(self):
-        self.
