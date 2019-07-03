@@ -4,6 +4,7 @@ import time
 
 LARGE_FONT = ("Verdana", 12)
 
+
 # The code for changing pages was derived from: http://stackoverflow.com/questions/7546050/switch-between-two-frames-in-tkinter
 # License: http://creativecommons.org/licenses/by-sa/3.0/
 
@@ -17,7 +18,6 @@ class SeaofBTCapp(tk.Tk):
 
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
-
 
         self.frames = {}
 
@@ -50,14 +50,30 @@ class StartPage(tk.Frame):
                             command=lambda: controller.show_frame(PageTwo))
         button2.pack()
 
+        # newbutt = tk.Button(self, text="New Button", command=lambda: self.myCallback(self.clock(newbutt)))
+        newbutt = tk.Button(self, text="New Button", command=lambda: self.myCallback(self.pipeToWidget(newbutt)))
+        newbutt.pack()
 
-        newButt = tk.Button(self, text="New Button", command=lambda: self.clock(newButt))
+    def myCallback(self, callback=None):
+       if callback:
+           callback()
 
-        newButt.pack()
 
-    def clock(self,el):
+
+    def clock(self, el):
         currenttime = datetime.datetime.now().strftime("Time: %H:%M:%S")
         el.config(text=currenttime)
+
+    # this function pipes input to an widget
+    def pipeToWidget(self, widget):
+        word = "hello"
+        for i in word:
+            print(i)
+            widget.update()
+            time.sleep(0.5)
+            widget.config(text=str(i))
+
+
 
 # Get text updating in realtime with current url:
 # Pass callback function into Sanner
