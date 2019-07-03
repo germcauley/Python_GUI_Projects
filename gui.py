@@ -7,12 +7,14 @@ from File_Functions import FileFunctions
 
 # Here, we are creating our class, Window, and inheriting from the Frame
 # class. Frame is a class from the tkinter module. (see Lib/tkinter/__init__)
-class Window(Frame):
+class MainWindow(ttk.Frame):
 
     # Define settings upon initialization. Here you can specify
     def __init__(self, master):
         # parameters that you want to send through the Frame class.
-        Frame.__init__(self, master)
+        ttk.Frame.__init__(self, master)
+
+
 
         # reference to the master widget, which is the tk window
         self.master = master
@@ -96,23 +98,15 @@ class Window(Frame):
         # placing the scan button on my window
         testButton.place(x=375, y=125)
 
+
+
+
+        # run first time
+    def update_text(self,text):
         # #create Text Widget
         T = Text(root, height=2, width=30)
         T.pack()
-        T.insert('1.0', 'here is my text to insert')
-
-        lab = Label(root)
-        lab.pack()
-        # run first time
-
-
-        def clock():
-            time = datetime.datetime.now().strftime("Time: %H:%M:%S")
-            lab.config(text=time)
-            # lab['text'] = time
-        root.after(1000, clock)  # run itself again after 1000 ms
-
-        clock()
+        T.insert('1.0', text)
 
 
 # root window created. Here, that would be the only window, but
