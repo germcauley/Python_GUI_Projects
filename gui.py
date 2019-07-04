@@ -2,17 +2,18 @@
 from tkinter.filedialog import *
 from tkinter import ttk
 import datetime
+import time
 from File_Functions import FileFunctions
 
 
 # Here, we are creating our class, Window, and inheriting from the Frame
 # class. Frame is a class from the tkinter module. (see Lib/tkinter/__init__)
-class MainWindow(ttk.Frame):
+class MainWindow(Frame):
 
     # Define settings upon initialization. Here you can specify
     def __init__(self, master):
         # parameters that you want to send through the Frame class.
-        ttk.Frame.__init__(self, master)
+        Frame.__init__(self, master)
 
 
 
@@ -92,14 +93,13 @@ class MainWindow(ttk.Frame):
         combo2.place(x=250, y=50)
         cbox2 = combo2
 
+
         # creating a scan button instance, pass env list and domain list in
-        testButton = Button(self, text="Test Scan", command=lambda: fileActions.Scanner(cbox.get(),cbox2.get()))
+        # testButton = Button(self, text="Test Scan", command=lambda: fileActions.Scanner(cbox.get(),cbox2.get()))
+        testButton = Button(self, text="Test Scan", command=lambda: self.UpdateWidget(testButton))
 
         # placing the scan button on my window
         testButton.place(x=375, y=125)
-
-
-
 
         # run first time
     def update_text(self,text):
@@ -107,6 +107,15 @@ class MainWindow(ttk.Frame):
         T = Text(root, height=2, width=30)
         T.pack()
         T.insert('1.0', text)
+
+    # this function pipes input to a widget
+    def UpdateWidget(self, widget):
+        word = "hello"
+        for i in word:
+            print(i)
+            widget.update()
+            time.sleep(0.5)
+            widget.config(text=str(i))
 
 
 # root window created. Here, that would be the only window, but
@@ -116,7 +125,7 @@ root = Tk()
 root.geometry("600x400")
 
 # creation of an instance
-app = Window(root)
+app = MainWindow(root)
 
 # mainloop
 root.mainloop()

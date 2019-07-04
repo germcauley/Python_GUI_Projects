@@ -2,14 +2,9 @@ from tkinter.filedialog import *
 import requests, os, sys
 from selenium import webdriver
 import datetime
-from gui import *
 
 
-class FileFunctions(MainWindow):
-
-    def __init__(self):
-        pass
-
+class FileFunctions(Frame):
 
     def OpenFile(self):
         name = askopenfilename(initialdir="",
@@ -65,5 +60,3 @@ class FileFunctions(MainWindow):
         exit()
         #Resultsfile.close()  # close file with all results
 
-    def update(self):
-        self.
