@@ -1,6 +1,7 @@
 from tkinter.filedialog import *
 import requests, os, sys
 from selenium import webdriver
+import time
 import datetime
 
 
@@ -24,7 +25,7 @@ class FileFunctions(Frame):
     def client_exit(self):
         exit()
 
-    def Scanner(self,env,dom):
+    def Scanner(self,env,dom,item):
 
         filename = "/Users/gmcauley/PycharmProjects/GUI_TEST_LIST_URLS/Urls/"+(env+dom) + ".txt"
         # filename = "/Users/gmcauley/Desktop/file.txt"
@@ -38,7 +39,7 @@ class FileFunctions(Frame):
             print("Requesting: " + line)
             try:
                 driver.get(line)
-
+                self.UpdateWidget(item,line)
                 # url = driver.current_url
                 status = requests.options(line).status_code
 
@@ -60,3 +61,11 @@ class FileFunctions(Frame):
         exit()
         #Resultsfile.close()  # close file with all results
 
+
+    # this function pipes input to a widget
+    def UpdateWidget(self, widget,text):
+
+        print(text)
+        widget.update()
+        time.sleep(0.5)
+        widget.config(text=str(text))

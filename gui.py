@@ -93,10 +93,12 @@ class MainWindow(Frame):
         combo2.place(x=250, y=50)
         cbox2 = combo2
 
+        urlLabel = Label(self, text="Text Area Update")
+        urlLabel.place(x=150, y=80)
 
         # creating a scan button instance, pass env list and domain list in
-        # testButton = Button(self, text="Test Scan", command=lambda: fileActions.Scanner(cbox.get(),cbox2.get()))
-        testButton = Button(self, text="Test Scan", command=lambda: self.UpdateWidget(testButton))
+        testButton = Button(self, text="Test Scan", command=lambda: fileActions.Scanner(cbox.get(),cbox2.get(),urlLabel))
+        #testButton = Button(self, text="Test Scan", command=lambda: self.UpdateWidget(urlLabel))
 
         # placing the scan button on my window
         testButton.place(x=375, y=125)
@@ -108,14 +110,6 @@ class MainWindow(Frame):
         T.pack()
         T.insert('1.0', text)
 
-    # this function pipes input to a widget
-    def UpdateWidget(self, widget):
-        word = "hello"
-        for i in word:
-            print(i)
-            widget.update()
-            time.sleep(0.5)
-            widget.config(text=str(i))
 
 
 # root window created. Here, that would be the only window, but

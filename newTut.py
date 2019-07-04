@@ -51,13 +51,12 @@ class StartPage(tk.Frame):
         button2.pack()
 
         # newbutt = tk.Button(self, text="New Button", command=lambda: self.myCallback(self.clock(newbutt)))
-        newbutt = tk.Button(self, text="New Button", command=lambda: self.UpdateWidget(newbutt))
-        newbutt.pack()
+        newbutton = tk.Button(self, text="New Button", command=lambda: self.UpdateWidget(newbutton))
+        newbutton.pack()
 
     # def myCallback(self, callback=None):
     #    if callback:
     #        callback()
-
 
 
     def clock(self, el):
