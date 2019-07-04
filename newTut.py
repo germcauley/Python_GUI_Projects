@@ -51,13 +51,12 @@ class StartPage(tk.Frame):
         button2.pack()
 
         # newbutt = tk.Button(self, text="New Button", command=lambda: self.myCallback(self.clock(newbutt)))
-        newbutt = tk.Button(self, text="New Button", command=lambda: self.myCallback(self.pipeToWidget(newbutt)))
-        newbutt.pack()
+        newbutton = tk.Button(self, text="New Button", command=lambda: self.UpdateWidget(newbutton))
+        newbutton.pack()
 
-    def myCallback(self, callback=None):
-       if callback:
-           callback()
-
+    # def myCallback(self, callback=None):
+    #    if callback:
+    #        callback()
 
 
     def clock(self, el):
@@ -65,7 +64,7 @@ class StartPage(tk.Frame):
         el.config(text=currenttime)
 
     # this function pipes input to an widget
-    def pipeToWidget(self, widget):
+    def UpdateWidget(self, widget):
         word = "hello"
         for i in word:
             print(i)
