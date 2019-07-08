@@ -6,7 +6,7 @@ https://ppg-stg.bsw-dev.net/borrow/credit-cards/card-care/features-benefits/
 https://ppg-stg.bsw-dev.net/borrow/mortgages/calculators/mortgage-calculator/
 https://ppg-stg.bsw-dev.net/campaigns/aer-credit-card/
 https://ppg-stg.bsw-dev.net/borrow/mortgages/campaigns/cashback-plus/
-https://ppg-stg.bsw-dev.net/borrow/credit-cards/
+https://ppg-stg.bsw-dev.net/borrow/credit-cardsasdasdd/
 https://ppg-stg.bsw-dev.net/financial-wellbeing/
 https://ppg-stg.bsw-dev.net/bank/sepa/bic-and-iban-explained/
 https://ppg-stg.bsw-dev.net/bank/international-payments/foreign-exchange-currency-converter/
