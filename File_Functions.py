@@ -1,6 +1,7 @@
 from tkinter.filedialog import *
 import requests, os, sys
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import time
 import datetime
 
@@ -31,7 +32,9 @@ class FileFunctions(Frame):
         # filename = "/Users/gmcauley/Desktop/file.txt"
         file = open(filename, "r")
         # initialize the driver
-        driver = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        driver = webdriver.Chrome(chrome_options=chrome_options)
         # Create a file and write results to it
         #Resultsfile = open("NewTestResultsFile.txt", "w")
         # Get URLS from  x global var
@@ -39,22 +42,23 @@ class FileFunctions(Frame):
             print("Requesting: " + line)
             try:
                 driver.get(line)
-                self.UpdateWidget(item,line)
                 # url = driver.current_url
                 status = requests.options(line).status_code
-
                 print("Status: " + str(status))
                 print("Actual URL: " + driver.current_url)
                 url = driver.current_url
-                current_status = status = requests.options(url).status_code
+                current_status = requests.options(url).status_code
                 print("Current status: " + str(current_status))
                 print(" --------------------------")
 
+                self.UpdateWidget(item, "Press enter to proceed to next page")
+                input()
                 # if "https://www.bankofireland.com/" in url:
                 # code = requests.options(line).status_code
                 #Resultsfile.write(line + str(status) + '/n')
             except:
                 print("Encountered an error with: " + driver.current_url)
+
         print('Script has finished running,all links have been scanned!')
         input("Press Enter to continue...")
         driver.quit()  # end driver
@@ -64,7 +68,6 @@ class FileFunctions(Frame):
 
     # this function pipes input to a widget
     def UpdateWidget(self, widget,text):
-
         print(text)
         widget.update()
         time.sleep(0.5)

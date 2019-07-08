@@ -103,15 +103,6 @@ class MainWindow(Frame):
         # placing the scan button on my window
         testButton.place(x=375, y=125)
 
-        # run first time
-    def update_text(self,text):
-        # #create Text Widget
-        T = Text(root, height=2, width=30)
-        T.pack()
-        T.insert('1.0', text)
-
-
-
 # root window created. Here, that would be the only window, but
 # you can later have windows within windows.
 root = Tk()
