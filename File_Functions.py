@@ -50,9 +50,6 @@ class FileFunctions(Frame):
                 current_status = requests.options(url).status_code
                 print("Current status: " + str(current_status))
                 print(" --------------------------")
-
-                self.UpdateWidget(item, "Press enter to proceed to next page")
-                input()
                 # if "https://www.bankofireland.com/" in url:
                 # code = requests.options(line).status_code
                 #Resultsfile.write(line + str(status) + '/n')
