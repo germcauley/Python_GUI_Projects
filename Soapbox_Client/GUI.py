@@ -1,6 +1,7 @@
 from tkinter.filedialog import *
 from tkinter import ttk
-
+from selenium import webdriver
+from base_page import BasePage
 from Actions import Actions
 
 
@@ -33,10 +34,9 @@ class MainWindow(Frame):
         closeButton = Button(self, text="Close Page",command=self.client_exit)
         # placing the button on my window
         closeButton.place(x=250, y=125)
-
         # creating a scan button instance
         # scanButton = Button(self, text="Run!",command=lambda: Actions.SoapBox)
-        scanButton = Button(self, text="Run!", command=lambda: Actions.thing(self,var1))
+        scanButton = Button(self, text="Run!", command=lambda: Actions.SoapBox(self,var1,var2))
         # , command = lambda: Actions.SoapBox(.get()
         # placing the button on my window
         scanButton.place(x=500, y=425)
@@ -50,12 +50,16 @@ class MainWindow(Frame):
         #     item.place(x=x,y=y)
         #     y+=20
 
+        #reddit button
         var1 = IntVar()
         chk1 = Checkbutton(self, text=str("Reddit"), fg="red", variable=var1)
         chk1.place(x =350, y=225)
+        #twitter button
+        var2 = IntVar()
+        chk2 = Checkbutton(self, text=str("Twitter"), fg="red", variable=var2)
+        chk2.place(x=350, y=255)
 
-
-
+        #get value of checkboxes
 
 
     def client_exit(self):

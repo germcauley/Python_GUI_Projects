@@ -2,6 +2,8 @@ from tkinter.filedialog import *
 import requests, os, sys
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from base_page import BasePage
+from Reddit import Reddit
 import time
 import datetime
 
@@ -48,12 +50,30 @@ class Actions(Frame):
     #     exit()
     #     #Resultsfile.close()  # close file with all results
 
+    def SoapBox(self,v1,v2):
+        var1val = Actions.checkbox_value(self,v1)
+        var2val = Actions.checkbox_value(self,v2)
+
+        if var1val > 0:
+            print("Login to reddit!")
+            driver = webdriver.Chrome()
+            driver.get("https://old.reddit.com/")
+            driver.quit()
+        else:
+            print("no reddit!")
+
+        if var2val > 0:
+            print("Login to Twitter!")
+            driver = webdriver.Chrome()
+            driver.get("https://www.twitter.com/")
+            driver.quit()
+        else:
+            print("no twitter!")
 
 
     # Will need to create a separate login function for every site added
 
-    def reddit_login_and_post(self,driver,credentials):
-        return "x"
 
-    def thing(self,var):
-        print(str(var.get()))
+    def checkbox_value(self, var):
+        return (var.get())
+

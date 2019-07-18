@@ -6,8 +6,8 @@ import time
 
 class BasePage(object):
 
-    def __init__(self):
-        self.driver = webdriver.Chrome()
+    def __init__(self,driver):
+        self.driver = driver
         self.timeout = 30
 
     def navigate(self, address):
