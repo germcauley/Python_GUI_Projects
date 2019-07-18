@@ -93,7 +93,7 @@ class MainWindow(Frame):
         combo2.place(x=250, y=50)
         cbox2 = combo2
 
-        urlLabel = Label(self, text="Text Area Update")
+        urlLabel = Label(self, text="")
         urlLabel.place(x=150, y=80)
 
         # creating a scan button instance, pass env list and domain list in
