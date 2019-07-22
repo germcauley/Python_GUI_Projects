@@ -36,7 +36,7 @@ class MainWindow(Frame):
         closeButton.place(x=250, y=125)
         # creating a scan button instance
         # scanButton = Button(self, text="Run!",command=lambda: Actions.SoapBox)
-        scanButton = Button(self, text="Run!", command=lambda: Actions.SoapBox(self,var1,var2))
+        scanButton = Button(self, text="Run!", command=lambda: Actions.SoapBox(self,var1,var2,var3))
         # , command = lambda: Actions.SoapBox(.get()
         # placing the button on my window
         scanButton.place(x=500, y=425)
@@ -57,8 +57,11 @@ class MainWindow(Frame):
         #twitter button
         var2 = IntVar()
         chk2 = Checkbutton(self, text=str("Twitter"), fg="red", variable=var2)
-        chk2.place(x=350, y=255)
-
+        chk2.place(x=350, y=245)
+        #LinkedIn button
+        var3 = IntVar()
+        chk3 = Checkbutton(self, text=str("LinkedIn"), fg="red", variable=var3)
+        chk3.place(x=350, y=265)
         #get value of checkboxes
 
 

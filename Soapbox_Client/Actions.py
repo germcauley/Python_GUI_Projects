@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from base_page import BasePage
 from Reddit import Reddit
+from LinkedIn import LinkedIN
 import time
 import datetime
 
@@ -50,9 +51,10 @@ class Actions(Frame):
     #     exit()
     #     #Resultsfile.close()  # close file with all results
 
-    def SoapBox(self,v1,v2):
+    def SoapBox(self,v1,v2,v3):
         var1val = Actions.checkbox_value(self,v1)
         var2val = Actions.checkbox_value(self,v2)
+        var3val = Actions.checkbox_value(self, v3)
 
         if var1val > 0:
             print("Login to reddit!")
@@ -70,10 +72,15 @@ class Actions(Frame):
         else:
             print("no twitter!")
 
+        if var3val > 0:
+            print("Login to LinkedIn!")
+            driver = webdriver.Chrome()
+            LinkedIN.LI_post()
+            driver.quit()
+        else:
+            print("no LinkedIn!")
 
     # Will need to create a separate login function for every site added
 
-
     def checkbox_value(self, var):
         return (var.get())
-
