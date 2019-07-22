@@ -23,4 +23,7 @@ class LinkedIN(BasePage):
         self.driver.find_elements_by_css_selector(pw_field).sendkeys("asdasd")
         self.driver.find_elements_by_css_selector(sign_in).click()
 
+    def testmethod(self):
+        print("asdsdsdasda")
+
 

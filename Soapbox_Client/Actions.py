@@ -74,9 +74,8 @@ class Actions(Frame):
 
         if var3val > 0:
             print("Login to LinkedIn!")
-            driver = webdriver.Chrome()
-            LinkedIN.LI_post()
-            driver.quit()
+            page = LinkedIN()
+            page.LI_post()
         else:
             print("no LinkedIn!")
 
@@ -84,3 +83,5 @@ class Actions(Frame):
 
     def checkbox_value(self, var):
         return (var.get())
+
+
