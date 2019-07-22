@@ -15,11 +15,8 @@ class MainWindow(Frame):
         # parameters that you want to send through the Frame class.
         Frame.__init__(self, master)
 
-
-
         # reference to the master widget, which is the tk window
         self.master = master
-
 
         # with that, we want to then run init_window, which doesn't yet exist
         self.init_window()
