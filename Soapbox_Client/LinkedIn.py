@@ -18,7 +18,7 @@ class LinkedIN(BasePage):
         email_field = "#login-email"
         pw_field = "#login-password"
         sign_in = "#login-submit"
-        self.driver.navigate(LIhome)
+        self.driver.get(LIhome)
         self.driver.find_elements_by_css_selector(email_field).sendkeys("asdasd")
         self.driver.find_elements_by_css_selector(pw_field).sendkeys("asdasd")
         self.driver.find_elements_by_css_selector(sign_in).click()

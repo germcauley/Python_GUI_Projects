@@ -69,8 +69,6 @@ class MainWindow(Frame):
         exit()
 
 
-
-
 # root window created. Here, that would be the only window, but
 # you can later have windows within windows.
 root = Tk()
